@@ -39,5 +39,4 @@
         </div>
     </div>
     <!-- Call To Action End -->
-
 @include('web.layouts.footer')
