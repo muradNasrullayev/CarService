@@ -15,9 +15,10 @@ class CarouselController extends Controller
     /**
      * @return Factory|View|Application
      */
-    public function index()//: Factory|View|Application
+    public function index(): Factory|View|Application
     {
-        $carousels = Carousel::query()->select('id', 'title', 'image','background_image')->get();
+        $carousels = Carousel::query()
+            ->select('id', 'title','description', 'image', 'background_image')->get();
         return view('admin.carousel.index', compact('carousels'));
     }
 
@@ -33,7 +34,7 @@ class CarouselController extends Controller
      * @param StoreRequest $request
      * @return RedirectResponse
      */
-    public function store(StoreRequest $request)//: RedirectResponse
+    public function store(StoreRequest $request): RedirectResponse
     {
         $data = [
             'title' => $request->title,
@@ -51,6 +52,7 @@ class CarouselController extends Controller
         $data['background_image'] = "storage/carousels/$filename";
 
         Carousel::query()->create($data);
+        toastr()->success('Data has been saved successfully!');
 
         return redirect()->route('admin.carousels.index');
     }
@@ -108,7 +110,18 @@ class CarouselController extends Controller
             'background_image' => $background_image,
         ]);
 
+        toastr()->success('Data updated successfully');
         return redirect()->route('admin.carousels.index');
+    }
+
+    /**
+     * @param int $id
+     * @return Factory|View|Application
+     */
+    public function show( int $id): Factory|View|Application
+    {
+        $carousel = Carousel::query()->findOrFail($id);
+        return view('admin.carousel.show', compact('carousel'));
     }
 
 
@@ -126,22 +139,16 @@ class CarouselController extends Controller
      * @param $id
      * @return RedirectResponse
      */
-    public function delete($id): RedirectResponse
+    public function destroy(int $id): RedirectResponse
     {
         $file = Carousel::query()->findOrFail($id);
 
-        if((file_exists(public_path($file->image)))) File::delete(public_path($file->image));
-        if((file_exists(public_path($file->background_image)))) File::delete(public_path($file->background_image));
+        if ((file_exists(public_path($file->image)))) File::delete(public_path($file->image));
+        if ((file_exists(public_path($file->background_image)))) File::delete(public_path($file->background_image));
 
         $file->delete();
+        toastr()->success('Data deleted successfully');
         return redirect()->route('admin.carousels.index');
-    }
-
-    public function show($id)//: Factory|View|Application
-    {
-
-        $carousel = Carousel::query()->findOrFail($id);
-        return view('admin.carousel.show', compact('carousel'));
     }
 }
 
