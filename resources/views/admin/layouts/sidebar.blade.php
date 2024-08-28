@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin.dashboard')}}">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.dashboard') }}">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -13,35 +13,59 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-        <a class="nav-link" href="{{route('admin.dashboard')}}">
+    <li class="nav-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+            <span>Dashboard</span>
+        </a>
     </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Carousels -->
-    <li class="nav-item">
-        <a class="nav-link" href="{{route('admin.carousels.index')}}">
+    <li class="nav-item {{ request()->routeIs('admin.carousels.index','admin.carousels.create', 'admin.carousels.store',
+            'admin.carousels.update','admin.carousels.show','admin.carousels.edit')? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.carousels.index') }}">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Carousel</span></a>
+            <span>Carousel</span>
+        </a>
     </li>
 
     <!-- new Item Expert -->
-    <li class="nav-item">
-        <a class="nav-link" href="{{route('admin.expert.index')}}">
+    <li class="nav-item {{ request()->routeIs('admin.expert.index','admin.expert.create', 'admin.expert.store',
+            'admin.expert.update','admin.expert.show','admin.expert.edit')? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.expert.index') }}">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Expert</span></a>
+            <span>Expert</span>
+        </a>
     </li>
 
+
     <!-- new Item Testimonial -->
-    <li class="nav-item">
-        <a class="nav-link" href="{{route('admin.testimonial.index')}}">
+    <li class="nav-item  {{ request()->routeIs('admin.testimonial.index','admin.testimonial.create', 'admin.testimonial.store',
+            'admin.testimonial.update','admin.testimonial.show','admin.testimonial.edit')? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.testimonial.index') }}">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Testimonial</span></a>
+            <span>Testimonial</span>
+        </a>
     </li>
+
+{{--    <li class="nav-item  {{ request()->routeIs('admin.contacts.index','admin.contacts.create', 'admin.contacts.store',--}}
+{{--            'admin.contacts.update','admin.contacts.show','admin.contacts.edit')? 'active' : '' }}">--}}
+{{--        <a class="nav-link" href="{{ route('admin.contacts.index') }}">--}}
+{{--            <i class="fas fa-fw fa-chart-area"></i>--}}
+{{--            <span>Contact</span>--}}
+{{--        </a>--}}
+{{--    </li>--}}
+
+{{--    <li class="nav-item  {{ request()->routeIs('admin.settings.index','admin.settings.create', 'admin.settings.store',--}}
+{{--            'admin.settings.update','admin.settings.show','admin.settings.edit')? 'active' : '' }}">--}}
+{{--        <a class="nav-link" href="{{ route('admin.settings.index') }}">--}}
+{{--            <i class="fas fa-fw fa-chart-area"></i>--}}
+{{--            <span>Setting</span>--}}
+{{--        </a>--}}
+{{--    </li>--}}
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

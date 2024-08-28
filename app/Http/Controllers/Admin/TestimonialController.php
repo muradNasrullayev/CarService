@@ -4,29 +4,32 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Testimonial;
 use Illuminate\Support\Facades\File;
 
 class TestimonialController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
-    public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function index(): Factory|View|Application
     {
-        $testimonials= Testimonial::query()->select('id','first_name','last_name','image','profession','feedback')->get();
-        return view('admin.testimonial.index',compact('testimonials'));
+        $testimonials = Testimonial::query()
+            ->select('id', 'first_name', 'last_name', 'image', 'profession', 'feedback')
+            ->get();
+        return view('admin.testimonial.index', compact('testimonials'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Factory|View|Application
      */
-    public function create(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function create(): Factory|View|Application
     {
         return view('admin.testimonial.create');
     }
@@ -34,10 +37,10 @@ class TestimonialController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Request $request
+     * @return RedirectResponse
      */
-    public function store(Request $request): \Illuminate\Http\RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         $data = [
             'first_name' => $request->first_name,
@@ -51,33 +54,27 @@ class TestimonialController extends Controller
         $file->move(storage_path('/app/public/testimonial/'), $filename);
         $data['image'] = "storage/testimonial/$filename";
 
-
-
         Testimonial::query()->create($data);
 
         return redirect()->route('admin.testimonial.index');
     }
 
+
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-    // * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @param int $id
+     * @return Factory|View|Application
      */
-    public function show($id)
+    public function show(int $id): Factory|View|Application
     {
         $testimonial = Testimonial::query()->findOrFail($id);
-
         return view('admin.testimonial.show', compact('testimonial'));
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @param int $id
+     * @return Application|Factory|View
      */
-    public function edit($id): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+    public function edit(int $id): Application|Factory|View
     {
         $testimonial = Testimonial::query()->findOrFail($id);
         return view('admin.testimonial.edit', compact('testimonial'));
@@ -86,11 +83,11 @@ class TestimonialController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Request $request
+     * @param int $id
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id): \Illuminate\Http\RedirectResponse
+    public function update(Request $request, $id): RedirectResponse
     {
         $testimonial = Testimonial::query()->findOrFail($id);
         $data = [
@@ -105,7 +102,7 @@ class TestimonialController extends Controller
         $file = $request->file('image');
         if (file_exists($file)) {
             $filename = time() . '-' . $file->getClientOriginalName();
-            if((file_exists(public_path($testimonial->image)))) File::delete(public_path($experts->image));
+            if ((file_exists(public_path($testimonial->image)))) File::delete(public_path($experts->image));
             $file->move(storage_path('/app/public/testimonial/'), $filename);
             $data['image'] = "storage/experts/$filename";
         }
@@ -115,16 +112,14 @@ class TestimonialController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @param int $id
+     * @return RedirectResponse
      */
-    public function destroy($id): \Illuminate\Http\RedirectResponse
+    public function destroy( int $id): RedirectResponse
     {
         $file = Testimonial::query()->findOrFail($id);
 
-        if((file_exists(public_path($file->image)))) File::delete(public_path($file->image));
+        if ((file_exists(public_path($file->image)))) File::delete(public_path($file->image));
         $file->delete();
         return redirect()->route('admin.testimonial.index');
     }

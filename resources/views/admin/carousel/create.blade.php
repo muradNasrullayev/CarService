@@ -22,12 +22,12 @@
             Image
 
             <div class="input-group mt-3">
-                <input type="file" name='image' class="form-control" accept="image/png, image/gif, image/jpeg">
+                <input type="file" name='image' class="form-control" accept=".png, .jpg, .jpeg, .gif, .svg">
             </div>
             <br>
             Background Image
             <div class="input-group mt-3">
-                <input type="file" name='background_image' class="form-control">
+                <input type="file" name='background_image' class="form-control" accept=".png, .jpg, .jpeg, .gif, .svg" >
            </div>
         </div>
 

@@ -11,7 +11,7 @@ class AdminRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -21,12 +21,11 @@ class AdminRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'email'=> 'required | email | min:5',
-            'password' => 'required | min:  8'
-
+            'email' => 'required|email',
+            'password' => 'required|min:6'
         ];
     }
 }
