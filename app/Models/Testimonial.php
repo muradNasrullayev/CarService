@@ -14,6 +14,5 @@ class Testimonial extends Model
         'image',
         'profession',
         'feedback',
-
     ];
 }

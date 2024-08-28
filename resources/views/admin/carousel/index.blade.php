@@ -21,6 +21,7 @@
                     <tr>
                         <th>№</th>
                         <th>Title</th>
+                        <th>Description</th>
                         <th>Image</th>
                         <th>Background image</th>
                         <th>Actions</th>
@@ -31,7 +32,8 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{$carousel->title}}</td>
-                            <td><img src="{{ asset($carousel->image) }}" height="100" width="120"></td>
+                            <td>{{$carousel->description}}</td>
+                            <td><img src="{{asset($carousel->image)}}" height="100" width="120"></td>
                             <td> <img src="{{asset( $carousel->background_image)}}" height="100" width="160"></td>
                             <td>
                                 <div class="btn-group" role="group" style="gap: 2px;">

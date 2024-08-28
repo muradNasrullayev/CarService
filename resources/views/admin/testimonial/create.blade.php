@@ -7,7 +7,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Carousels Create Page</h1>
+    <h1 class="h3 mb-4 text-gray-800">Testimonial Create Page</h1>
 
     <form class="carousel" method="post", action="{{route('admin.testimonial.store')}}" enctype="multipart/form-data">
         @csrf
