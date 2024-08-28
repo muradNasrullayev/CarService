@@ -7,7 +7,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Expert Create Page</h1>
+    <h1 class="h3 mb-4 text-gray-800">Expert Show Page</h1>
 
     <form class="expert" method="POST", action="{{route('admin.expert.update',$expert->id)}}" enctype="multipart/form-data">
         @csrf

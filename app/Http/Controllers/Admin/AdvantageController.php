@@ -16,17 +16,12 @@ class AdvantageController extends Controller
     public function index()//: \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         $advantages = Advantage::query()
-            ->select('title', 'description','icon')
+            ->select('id','title', 'description','icon')
             ->get();
 
         return view('admin.advantage.index', compact('advantages'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-//     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
     public function create()//: \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
 
@@ -46,44 +41,56 @@ class AdvantageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Advantages  $about
-     * @return \Illuminate\Http\Response
+     * @param  \App\Models\Advantage  $about
+     * @return //\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show(Advantages $about)
+    public function show( $id)
     {
-        //
+
+        $advantage = Advantage::query()->findOrFail($id);
+
+
+        return view('admin.advantage.show', compact('advantage'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Advantages  $about
-     * @return \Illuminate\Http\Response
+     * @param  \App\Models\Advantage  $about
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit(Advantages $about)
+    public function edit( $id,Request $request)
     {
-        //
+        $advantage = Advantage::query()->findOrFail($id);
+        return view('admin.advantage.edit', compact('advantage'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Advantages  $about
-     * @return \Illuminate\Http\Response
+     * @param  \App\Models\Advantage  $about
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Advantages $about)
+    public function update(Request $request, $id)
     {
-        //
+        $advantage = Advantage::query()->findOrFail($id);
+        $data=[
+            'title'=>$request->title,
+            'description'=>$request->description,
+            'icon'=>$request->icon
+        ];
+        $advantage->update($data);
+        return redirect()->route('admin.advantage.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Advantages  $about
+     * @param  \App\Models\Advantage  $about
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Advantages $about)
+    public function destroy(Advantage $about)
     {
         //
     }
