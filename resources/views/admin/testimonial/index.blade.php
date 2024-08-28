@@ -20,7 +20,8 @@
                     <thead>
                     <tr>
                         <th>№</th>
-                        <th>Name</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
                         <th>Image</th>
                         <th>Profession</th>
                         <th>Feedback</th>
@@ -31,7 +32,8 @@
                     @foreach($testimonials as $testimonial)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{$testimonial->first_name.' '.$testimonial->last_name}}</td>
+                            <td>{{$testimonial->first_name}}</td>
+                            <td>{{$testimonial->last_name}}</td>
                             <td><img src="{{ asset($testimonial->image) }}" height="100" width="120"></td>
                             <td> {{$testimonial->profession}}</td>
                             <td>{{$testimonial->feedback}}</td>

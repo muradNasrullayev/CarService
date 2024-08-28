@@ -102,6 +102,7 @@ class TestimonialController extends Controller
         $file = $request->file('image');
         if (file_exists($file)) {
             $filename = time() . '-' . $file->getClientOriginalName();
+            if((file_exists(public_path($testimonial->image)))) File::delete(public_path($testimonial->image));
             if ((file_exists(public_path($testimonial->image)))) File::delete(public_path($experts->image));
             $file->move(storage_path('/app/public/testimonial/'), $filename);
             $data['image'] = "storage/experts/$filename";

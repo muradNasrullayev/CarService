@@ -43,6 +43,19 @@
 
 
     <!-- new Item Testimonial -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('admin.testimonial.index')}}">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Testimonial</span></a>
+    </li>
+
+    <!-- new Item Advantages -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('admin.advantage.index')}}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Advantage</span></a>
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
     <li class="nav-item  {{ request()->routeIs('admin.testimonial.index','admin.testimonial.create', 'admin.testimonial.store',
             'admin.testimonial.update','admin.testimonial.show','admin.testimonial.edit')? 'active' : '' }}">
         <a class="nav-link" href="{{ route('admin.testimonial.index') }}">
@@ -70,10 +83,11 @@
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
+
 
 </ul>
 <!-- End of Sidebar -->

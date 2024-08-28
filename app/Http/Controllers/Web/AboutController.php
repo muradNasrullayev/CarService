@@ -3,12 +3,21 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Advantage;
+use App\Models\Expert;
 
 class AboutController extends Controller
 {
     public function about()
     {
-        return view('web.expert');
+        $advantages = Advantage::query()
+            ->select('title', 'description','icon')
+            ->get();
+
+        $experts = Expert::query()->select('id', 'name','job','image','facebook','twitter','instagram')
+        ->orderBy('id','desc')
+        ->take(4)
+        ->get();
+        return view('web.about',compact('advantages','experts'));
     }
 }
