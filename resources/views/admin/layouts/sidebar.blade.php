@@ -20,8 +20,6 @@
         </a>
     </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Carousels -->
     <li class="nav-item {{ request()->routeIs('admin.carousels.index','admin.carousels.create', 'admin.carousels.store',
@@ -42,20 +40,12 @@
     </li>
 
 
-    <!-- new Item Testimonial -->
-    <li class="nav-item">
-        <a class="nav-link" href="{{route('admin.testimonial.index')}}">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Testimonial</span></a>
-    </li>
-
-    <!-- new Item Advantages -->
     <li class="nav-item">
         <a class="nav-link" href="{{route('admin.advantage.index')}}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Advantage</span></a>
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
+    </li>
+
     <li class="nav-item  {{ request()->routeIs('admin.testimonial.index','admin.testimonial.create', 'admin.testimonial.store',
             'admin.testimonial.update','admin.testimonial.show','admin.testimonial.edit')? 'active' : '' }}">
         <a class="nav-link" href="{{ route('admin.testimonial.index') }}">
@@ -64,28 +54,27 @@
         </a>
     </li>
 
-{{--    <li class="nav-item  {{ request()->routeIs('admin.contacts.index','admin.contacts.create', 'admin.contacts.store',--}}
-{{--            'admin.contacts.update','admin.contacts.show','admin.contacts.edit')? 'active' : '' }}">--}}
-{{--        <a class="nav-link" href="{{ route('admin.contacts.index') }}">--}}
-{{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-{{--            <span>Contact</span>--}}
-{{--        </a>--}}
-{{--    </li>--}}
+    {{--    <li class="nav-item  {{ request()->routeIs('admin.contacts.index','admin.contacts.create', 'admin.contacts.store',--}}
+    {{--            'admin.contacts.update','admin.contacts.show','admin.contacts.edit')? 'active' : '' }}">--}}
+    {{--        <a class="nav-link" href="{{ route('admin.contacts.index') }}">--}}
+    {{--            <i class="fas fa-fw fa-chart-area"></i>--}}
+    {{--            <span>Contact</span>--}}
+    {{--        </a>--}}
+    {{--    </li>--}}
 
-{{--    <li class="nav-item  {{ request()->routeIs('admin.settings.index','admin.settings.create', 'admin.settings.store',--}}
-{{--            'admin.settings.update','admin.settings.show','admin.settings.edit')? 'active' : '' }}">--}}
-{{--        <a class="nav-link" href="{{ route('admin.settings.index') }}">--}}
-{{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-{{--            <span>Setting</span>--}}
-{{--        </a>--}}
-{{--    </li>--}}
+    {{--    <li class="nav-item  {{ request()->routeIs('admin.settings.index','admin.settings.create', 'admin.settings.store',--}}
+    {{--            'admin.settings.update','admin.settings.show','admin.settings.edit')? 'active' : '' }}">--}}
+    {{--        <a class="nav-link" href="{{ route('admin.settings.index') }}">--}}
+    {{--            <i class="fas fa-fw fa-chart-area"></i>--}}
+    {{--            <span>Setting</span>--}}
+    {{--        </a>--}}
+    {{--    </li>--}}
 
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
 
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 
 
