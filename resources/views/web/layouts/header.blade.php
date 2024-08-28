@@ -92,7 +92,7 @@
                         <a href="{{ route('booking') }}" class="dropdown-item">Booking</a>
                         <a href="{{route('team')}}" class="dropdown-item">Technicians</a>
                         <a href="{{route('test')}}" class="dropdown-item">Testimonial</a>
-                        <a href="{{ route('c404') }}" class="dropdown-item">404 Page</a>
+
                     </div>
                 </div>
                 <a href="{{ route('contact') }}" class="nav-item nav-link @if(url()->current() === route('contact')) active @endif">Contact</a>
