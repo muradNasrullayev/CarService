@@ -2,6 +2,8 @@
 
 namespace App\Exceptions;
 
+use App\Models\Carousel;
+use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 

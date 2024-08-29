@@ -1,4 +1,4 @@
-@section('title', 'Expert Page')
+@section('title', 'Experts Update Page')
 @include('admin.layouts.head')
 @include('admin.layouts.sidebar')
 @include('admin.layouts.header')
@@ -7,60 +7,39 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Expert Page</h1>
+    <h1 class="h3 mb-4 text-gray-800">Expert Show Page</h1>
 
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
+    <form class="expert" method="POST", action="{{route('admin.expert.update',$expert->id)}}" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+        <div class="rows">
+            <div class="input-group mt-3">
+                <input value="{{$expert->name}}" type="text" name="name" class="form-control" placeholder="Name">
+            </div>
 
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Job</th>
-                        <th>Image</th>
-                        <th>Facebook</th>
-                        <th>Twitter</th>
-                        <th>Instagram </th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+            <div class="input-group mt-3">
+                <input value= "{{$expert->job}}" type="text" name="job" class="form-control" placeholder="Job">
+            </div>  <br>
+            Image
 
-                        <tr>
-                            <td>{{$expert->name}}</td>
-                            <td>{{$expert->job}}</td>
-                            <td><img src="{{asset($expert->image)}}"height="100" width="120"></td>
-                            <td>{{$expert->facebook}}</td>
-                            <td>{{$expert->twitter}}</td>
-                            <td>{{$expert->instagram}}</td>
-                            <td>
-                                <div class="btn-group" role="group" style="gap: 2px;">
-                                    <a href="{{ route('admin.expert.edit', $expert->id) }}" class="btn btn-warning mt-3">Edit</a>
+            <div class="input-group mt-3">
+                <img src="{{asset($expert->image)}}"height="120" width="120"> <br>
+            </div>
 
-                                    <a href="{{route('admin.expert.index')}}" class="btn btn-primary mt-3">
-                                        <svg href="" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                                            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"/>
-                                            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
-                                        </svg>
-                                    </a>
-
-                                    <form action="{{route('admin.expert.destroy', $expert->id)}}"
-                                          method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger mt-3">Delete</button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </table>
+            <br>
+            <div class="input-group mt-3">
+                <input value=" {{$expert->facebook}} " type="text" name="facebook" class="form-control" placeholder="Facebook">
+            </div>
+            <div class="input-group mt-3">
+                <input value=" {{$expert->twitter}}" type="text" name="twitter" class="form-control" placeholder="Twitter">
+            </div>
+            <div class="input-group mt-3">
+                <input value=" {{$expert->instagram}}" type="text" name="instagram" class="form-control" placeholder="Instagram">
             </div>
         </div>
-    </div>
+
+
+    </form>
 </div>
 <!-- /.container-fluid -->
 @include('admin.layouts.footer')
