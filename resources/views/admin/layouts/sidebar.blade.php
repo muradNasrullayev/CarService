@@ -34,7 +34,7 @@
     <li class="nav-item {{ request()->routeIs('admin.expert.index','admin.expert.create', 'admin.expert.store',
             'admin.expert.update','admin.expert.show','admin.expert.edit')? 'active' : '' }}">
         <a class="nav-link" href="{{ route('admin.expert.index') }}">
-            <i class="fas fa-fw fa-chart-area"></i>
+            <i class="fas fa-fw fa-users"></i>
             <span>Expert</span>
         </a>
     </li>
@@ -54,21 +54,19 @@
         </a>
     </li>
 
-    {{--    <li class="nav-item  {{ request()->routeIs('admin.contacts.index','admin.contacts.create', 'admin.contacts.store',--}}
-    {{--            'admin.contacts.update','admin.contacts.show','admin.contacts.edit')? 'active' : '' }}">--}}
-    {{--        <a class="nav-link" href="{{ route('admin.contacts.index') }}">--}}
-    {{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-    {{--            <span>Contact</span>--}}
-    {{--        </a>--}}
-    {{--    </li>--}}
+{{--        <li class="nav-item  {{ request()->routeIs('admin.contacts.index','admin.contacts.update')? 'active' : '' }}">--}}
+{{--            <a class="nav-link" href="{{ route('admin.contacts.index') }}">--}}
+{{--    <i class="fas fa-fw fa-address-book"></i>--}}
+{{--                <span>Contact</span>--}}
+{{--            </a>--}}
+{{--        </li>--}}
 
-    {{--    <li class="nav-item  {{ request()->routeIs('admin.settings.index','admin.settings.create', 'admin.settings.store',--}}
-    {{--            'admin.settings.update','admin.settings.show','admin.settings.edit')? 'active' : '' }}">--}}
-    {{--        <a class="nav-link" href="{{ route('admin.settings.index') }}">--}}
-    {{--            <i class="fas fa-fw fa-chart-area"></i>--}}
-    {{--            <span>Setting</span>--}}
-    {{--        </a>--}}
-    {{--    </li>--}}
+        <li class="nav-item  {{ request()->routeIs('admin.setting.index','admin.setting.update')? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.setting.index') }}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Setting</span>
+            </a>
+        </li>
 
 
 

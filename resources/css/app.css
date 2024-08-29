@@ -2,3 +2,22 @@
     background-color: #007bff; /* Цвет фона для активного элемента */
     color: #fff; /* Цвет текста для активного элемента */
 }
+
+.container-fluid {
+    padding: 15px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    width: 100%;
+}
+
+.btn-success {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
