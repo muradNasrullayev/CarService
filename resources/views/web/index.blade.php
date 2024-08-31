@@ -14,7 +14,8 @@
                                 <div class="col-10 col-lg-7 text-center text-lg-start">
                                     <h6 class="text-white text-uppercase mb-3 animated slideInDown">{{$item->title}}</h6>
                                     <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">{{$item->description}}</h1>
-                                    <a href="{{route('about')}}" class="btn btn-primary py-3 px-5 animated slideInDown">Learn More<i class="fa fa-arrow-right ms-3"></i></a>
+                                    <a href="{{route('about')}}" class="btn btn-primary py-3 px-5 animated slideInDown">Learn
+                                        More<i class="fa fa-arrow-right ms-3"></i></a>
                                 </div>
                                 <div class="col-lg-5 d-none d-lg-flex animated zoomIn">
                                     <img class="img-fluid" src="{{ asset($item->image) }}" alt="">
@@ -40,7 +41,7 @@
 <!-- Carousel End -->
 
 {{--@include('web.widgets.about-15-years')--}}
-@include('web.widgets.service-2')
+@include('web.widgets.service')
 @include('web.widgets.booking')
 @include('web.widgets.experts')
 @include('web.widgets.advantage')

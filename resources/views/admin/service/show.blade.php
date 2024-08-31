@@ -1,4 +1,4 @@
-@section('title', 'Carousels Edit Page')
+@section('title', 'Service Show Page')
 @include('admin.layouts.head')
 @include('admin.layouts.sidebar')
 @include('admin.layouts.header')
@@ -9,35 +9,43 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">Carousels Show Page</h1>
 
-    <form class="carousel" method="post" action="{{route('admin.carousels.update', $carousel->id)}}" enctype="multipart/form-data">
+    <form class="carousel" method="post", action="" enctype="multipart/form-data">
         @csrf
-        @method('PUT')
         <div class="rows">
             <div class="input-group mt-3">
-                <input type="text" name="title" class="form-control" placeholder="title" value="{{ $carousel->title }}">
+                <input type="text" value="{{$service->title}}" name="title" class="form-control" placeholder="Title">
             </div>
 
             <div class="input-group mt-3">
-                <input type="text" name="description" class="form-control" placeholder="description"
-                       value="{{ $carousel->description }}">
+                <input type="text" name="our_services_name" value="{{$service->our_services_name}}" class="form-control" placeholder="Our Servoce Name">
+            </div>
+
+            <div class="input-group mt-3">
+                <input type="text" name="icon" VALUE="{{$service->icon}}" class="form-control" placeholder="Icon">
             </div>
             Image
-            <br>
-            <img src="{{asset($carousel->image)}}" HEIGHT="120" width="140 "> <br>
-            <br>
-            <div class="input-group mt-3">
-                {{--                <img src="">--}}
-
-
-
-            </div>
-            <br>Background Image
-            <br>
-            <img src="{{asset($carousel->background_image)}} "HEIGHT="120" width="140 "> <br>
 
             <div class="input-group mt-3">
-
+                <img src="{{ asset($service->image) }} "height="150" width="150"    >
             </div>
+
+            <div class="input-group mt-3">
+                <input type="text" name="description_title" value="{{$service->description_title}}" class="form-control" placeholder="Description Title">
+            </div>
+
+
+            <div class="input-group mt-3">
+                <input type="text" name="description" value="{{$service->description}}" class="form-control" placeholder="Description">
+            </div>
+            <br>
+            Advantage
+            <div class="input-group mt-3">
+                @foreach($service_advantages as $item => $service_advantage)
+                    {{$item+1}}-{{$service_advantage}} <br>
+                @endforeach
+            </div>
+
+
         </div>
 
 

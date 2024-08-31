@@ -1,4 +1,4 @@
-@section('title', 'Carousels Create Page')
+@section('title', 'Advantage Create Page')
 @include('admin.layouts.head')
 @include('admin.layouts.sidebar')
 @include('admin.layouts.header')
@@ -7,28 +7,22 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Carousels Create Page</h1>
+    <h1 class="h3 mb-4 text-gray-800">Advantage Create Page</h1>
 
-    <form class="carousel" method="post", action="{{route('admin.carousels.store')}}" enctype="multipart/form-data">
+    <form class="carousel" method="post", action="{{route('admin.advantage.store')}}" enctype="multipart/form-data">
         @csrf
         <div class="rows">
             <div class="input-group mt-3">
-                <input type="text" name="title" class="form-control" placeholder="tittle">
+                <input type="text" name="title" class="form-control" placeholder="Title">
             </div>
 
             <div class="input-group mt-3">
-                <input type="text" name="description" class="form-control" placeholder="description">
-            </div>  <br>
-            Image
+                <input type="text" name="description" class="form-control" placeholder="Description">
+            </div>
 
             <div class="input-group mt-3">
-                <input type="file" name='image' class="form-control" accept=".png, .jpg, .jpeg, .gif, .svg">
+                <input type="text" name="icon" class="form-control" placeholder="Icon">
             </div>
-            <br>
-            Background Image
-            <div class="input-group mt-3">
-                <input type="file" name='background_image' class="form-control" accept=".png, .jpg, .jpeg, .gif, .svg" >
-           </div>
         </div>
 
         <button type="submit" class="btn btn-success mt-3"> Create </button>

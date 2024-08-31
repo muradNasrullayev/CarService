@@ -54,6 +54,15 @@
         </a>
     </li>
 
+    <!-- Nav Item - Service -->
+    <li class="nav-item {{ request()->routeIs('admin.service.index') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.service.index') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Service</span>
+        </a>
+    </li>
+
+
     {{--    <li class="nav-item  {{ request()->routeIs('admin.contacts.index','admin.contacts.create', 'admin.contacts.store',--}}
     {{--            'admin.contacts.update','admin.contacts.show','admin.contacts.edit')? 'active' : '' }}">--}}
     {{--        <a class="nav-link" href="{{ route('admin.contacts.index') }}">--}}

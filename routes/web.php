@@ -6,14 +6,15 @@ use App\Http\Controllers\Admin\{
     CarouselController,
     ExpertController,
     TestimonialController,
-    AdvantageController
+    AdvantageController,
+    ServiceController as AdminService,
+
 };
 
 use App\Http\Controllers\Web\{
     BookingController,
     ContacController,
     ServiceController,
-    C404Controller,
     MainController,
     AboutController,
     TeamController,
@@ -42,6 +43,7 @@ Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => 'isLogin']
     Route::resource('/expert', ExpertController::class);
     Route::resource('/testimonial', TestimonialController::class);
     Route::resource('/advantage', AdvantageController::class);
+    Route::resource('/service', AdminService::class);
 
 });
 Route::group(['prefix' => '/admin', 'as' => 'admin.','middleware' => 'isNotLogin'], function (){
