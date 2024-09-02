@@ -19,7 +19,8 @@ use App\Http\Controllers\Web\{
     AboutController,
     TeamController,
     TestController,
-    CodeTestController
+    CodeTestController ,
+    AuthController as WebAuthController,
 };
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,11 @@ Route::get ('/service',[ServiceController::class, 'service'])->name('service');
 Route::get ('/team',[TeamController::class,'team'])->name('team');
 Route::get ('/test',[TestController::class,'test'])->name('test');
 Route::get ('/codeTest',[CodeTestController::class,'codeTest'])->name('codeTest');
+Route::get('/login', [WebAuthController::class , 'login'])->name('login');
+Route::post('/login', [WebAuthController::class , 'loginPost'])->name('loginPost');
+Route::get('/register', [WebAuthController::class , 'register'])->name('register');
+Route::post('/register', [WebAuthController::class , 'registerPost'])->name('registerPost');
+
 
 
 //ADMIN
