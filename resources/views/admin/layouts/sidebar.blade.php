@@ -57,15 +57,20 @@
     <!-- Nav Item - Service -->
     <li class="nav-item {{ request()->routeIs('admin.service.index') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('admin.service.index') }}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-data-fill" viewBox="0 0 16 16">
+                <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z"/>
+                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5zM10 8a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm4-3a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1"/>
+            </svg>
             <span>Service</span>
         </a>
     </li>
 
 
-    <li class="nav-item {{ request()->routeIs('admin.service.index') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('admin.service.index') }}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+    <li class="nav-item {{ request()->routeIs('admin.client') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.client') }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+            </svg>
             <span>Clients</span>
         </a>
     </li>

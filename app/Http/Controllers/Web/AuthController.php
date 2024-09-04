@@ -20,6 +20,7 @@ class AuthController extends Controller
         return view('web.login-register.login');
     }
 
+<<<<<<< HEAD
 
     /**
      * @param LoginRequest $request
@@ -30,6 +31,12 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (auth()->attempt($credentials)) {
+=======
+    public function loginPost(LoginRequest $request)//: \Illuminate\Http\RedirectResponse
+    {
+        $attempt = Auth::attempt(['email'=>$request->email, 'password'=>$request->password]);
+        if ($attempt) {
+>>>>>>> 23a583fb9154b427a184ea933ba2bb78e863f597
             return redirect()->route('home');
         } else {
             Session::flush();
@@ -43,7 +50,11 @@ class AuthController extends Controller
 
     public function register(): View
     {
+<<<<<<< HEAD
         return view('web.login-register.register');
+=======
+        return view('web.register');
+>>>>>>> 23a583fb9154b427a184ea933ba2bb78e863f597
     }
 
 
@@ -56,6 +67,7 @@ class AuthController extends Controller
                 'password' => Hash::make($request->getPassword())
             ];
             Client::query()->create($data);
+<<<<<<< HEAD
         }
         return redirect()->route('register')->withErrors('Cridentials are invalid');
     }
@@ -70,4 +82,10 @@ class AuthController extends Controller
         Auth::logout();
         return redirect()->route('home');
     }
+=======
+            return redirect()->route('home');
+        }
+        return redirect()->route('register')->withErrors('Cridentials are invalid');
+    }
+>>>>>>> 23a583fb9154b427a184ea933ba2bb78e863f597
 }
