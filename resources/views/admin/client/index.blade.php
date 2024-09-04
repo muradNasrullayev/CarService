@@ -25,15 +25,17 @@
                     <tbody>
                     @foreach($clients as $client)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ ($clients->currentPage() - 1) * $clients->perPage() + $loop->iteration }}</td>
                             <td>{{$client->name}}</td>
                             <td>{{$client->email}}</td>
                             <td>{{$client->password}}</td>
-
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+                <div>
+                    {{ $clients->links() }}
+                </div>
             </div>
         </div>
     </div>
