@@ -7,35 +7,39 @@ use App\Http\Controllers\Admin\{AuthController,
     ExpertController,
     SettingController,
     TestimonialController,
-    AdvantageController
+    AdvantageController,
+    ServiceController as AdminService,
+    ClientController,
 };
 
 use App\Http\Controllers\Web\{
     BookingController,
     ContacController,
     ServiceController,
-    C404Controller,
     MainController,
     AboutController,
     TeamController,
     TestController,
-    CodeTestController
+    CodeTestController ,
+    AuthController as WebAuthController,
+
 };
 use Illuminate\Support\Facades\Route;
 
 //WEB
-Route::get('/', [MainController::class, 'index']);
-Route::get('/home', [MainController::class, 'index'])->name('home');
-//    Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-//    Route::post('/', [ContactController::class, 'sendMessage'])->name('contact.send-message');
-Route::get('/about', [AboutController::class, 'about'])->name('about');
-Route::get('/booking', [BookingController::class, 'booking'])->name('booking');
-Route::get('/contact', [ContacController::class, 'contact'])->name('contact');
-Route::get('/service', [ServiceController::class, 'service'])->name('service');
-Route::get('/team', [TeamController::class, 'team'])->name('team');
-Route::get('/test', [TestController::class, 'test'])->name('test');
-Route::get('/codeTest', [CodeTestController::class, 'codeTest'])->name('codeTest');
-
+Route::get ('/', [MainController::class , 'index']);
+Route::get ('/home', [MainController::class , 'index'])->name('home');
+Route::get ('/about',[AboutController::class , 'about'])->name('about');
+Route::get ('/booking',[BookingController::class, 'booking'])->name('booking');
+Route::get ('/contact',[ContacController::class,'contact'])->name('contact');
+Route::get ('/service',[ServiceController::class, 'service'])->name('service');
+Route::get ('/team',[TeamController::class,'team'])->name('team');
+Route::get ('/test',[TestController::class,'test'])->name('test');
+Route::get ('/codeTest',[CodeTestController::class,'codeTest'])->name('codeTest');
+Route::get('/login', [WebAuthController::class , 'login'])->name('login');
+Route::post('/login', [WebAuthController::class , 'loginPost'])->name('loginPost');
+Route::get('/register', [WebAuthController::class , 'register'])->name('register');
+Route::post('/register', [WebAuthController::class , 'registerPost'])->name('registerPost');
 
 //ADMIN
 Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => 'isLogin'], function () {
@@ -45,6 +49,8 @@ Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => 'isLogin']
     Route::resource('/expert', ExpertController::class);
     Route::resource('/testimonial', TestimonialController::class);
     Route::resource('/advantage', AdvantageController::class);
+    Route::resource('/service', AdminService::class);
+    Route::get('/client',[ClientController::class , 'index'])->name('client');
     Route::resource('/contact', ContactController::class)->only(['index', 'edit', 'update', 'destroy']);
     Route::resource('/setting', SettingController::class)->only(['index', 'update']);
 });

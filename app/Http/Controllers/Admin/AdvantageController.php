@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Advantage;
+use App\Models\Carousel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class AdvantageController extends Controller
 {
@@ -24,18 +26,25 @@ class AdvantageController extends Controller
 
     public function create()//: \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
-
+        return (view('admin.advantage.create'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+
+        $data=[
+            'title' => request('title'),
+            'description' => request('description'),
+            'icon' => request('icon')
+        ];
+        Advantage::query()->create($data);
+        return redirect()->route('admin.advantage.index');
     }
 
     /**
@@ -90,8 +99,11 @@ class AdvantageController extends Controller
      * @param  \App\Models\Advantage  $about
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Advantage $about)
+    public function destroy($id)
     {
-        //
+        $file = Advantage::query()->findOrFail($id);
+        $file->delete();
+        toastr()->success('Data deleted successfully');
+        return redirect()->route('admin.advantage.index');
     }
 }

@@ -11,7 +11,9 @@
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-
+        <div class="card-header py-3">
+            <a href="{{ route('admin.advantage.create') }}" class="btn btn-success">Create New Carousel</a>
+        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -29,7 +31,7 @@
                         <tr>
                             <td>{{$advantage->title}}</td>
                             <td>{{$advantage->description}}</td>
-                            <td>{{$advantage->description}}</td>
+                            <td>{{$advantage->icon}}</td>
                             <td>
                                 <div class="btn-group" role="group" style="gap: 2px;">
                                     <a href="{{ route('admin.advantage.edit', $advantage->id) }}"
@@ -40,6 +42,12 @@
                                             <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
                                         </svg>
                                     </a>
+                                    <form action="{{route('admin.advantage.destroy', $advantage->id)}}"
+                                          method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger mt-3">Delete</button> <br>
+                                    </form>
                                 </div>
                             </td>
                         </tr>

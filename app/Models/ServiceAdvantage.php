@@ -5,18 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Advantage extends Model
+class ServiceAdvantage extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-      'title',
-      'description',
-      'icon'
+      'service_id',
+      'advantage_id',
     ];
 
-    public function services()
-    {
-        return $this->belongsToMany(Service::class);
-    }
+
 }
