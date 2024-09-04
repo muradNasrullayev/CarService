@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\{
     TestimonialController,
     AdvantageController,
     ServiceController as AdminService,
-
+    ClientController,
 };
 
 use App\Http\Controllers\Web\{
@@ -21,6 +21,7 @@ use App\Http\Controllers\Web\{
     TestController,
     CodeTestController ,
     AuthController as WebAuthController,
+
 };
 use Illuminate\Support\Facades\Route;
 
@@ -50,6 +51,7 @@ Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => 'isLogin']
     Route::resource('/testimonial', TestimonialController::class);
     Route::resource('/advantage', AdvantageController::class);
     Route::resource('/service', AdminService::class);
+    Route::get('/client',[ClientController::class , 'index'])->name('client');
 
 });
 Route::group(['prefix' => '/admin', 'as' => 'admin.','middleware' => 'isNotLogin'], function (){

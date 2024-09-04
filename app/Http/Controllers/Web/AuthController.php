@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LoginRequest;
-use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\Web\LoginRequest;
+use App\Http\Requests\Web\RegisterRequest;
 use App\Models\Client;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -20,7 +20,7 @@ class AuthController extends Controller
     public function loginPost(LoginRequest $request)//: \Illuminate\Http\RedirectResponse
     {
         $attempt = Auth::attempt(['email'=>$request->email, 'password'=>$request->password]);
-        return  $attempt;
+
         if ($attempt) {
             return redirect()->route('home');
         }
