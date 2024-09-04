@@ -11,7 +11,7 @@ class LoginRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -21,11 +21,26 @@ class LoginRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required|min:6'
+        ];
+    }
+
+    /**
+     * Получает сообщения об ошибках валидации.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'email.required' => 'Email address is required.',
+            'email.email' => 'Please enter a valid email address..',
+            'password.required' => 'Password is required.',
+            'password.min' => 'Password must be at least 6 characters long.',
         ];
     }
 }
