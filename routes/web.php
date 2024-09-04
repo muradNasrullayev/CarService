@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Admin\{
-    AuthController,
+use App\Http\Controllers\Admin\{AuthController,
     AdminController,
     CarouselController,
+    ContactController,
     ExpertController,
+    SettingController,
     TestimonialController,
     AdvantageController,
     ServiceController as AdminService,
@@ -40,23 +41,22 @@ Route::post('/login', [WebAuthController::class , 'loginPost'])->name('loginPost
 Route::get('/register', [WebAuthController::class , 'register'])->name('register');
 Route::post('/register', [WebAuthController::class , 'registerPost'])->name('registerPost');
 
-
-
 //ADMIN
-Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => 'isLogin'], function (){
-    Route::get ('/', [AdminController::class , 'dashboard'])->name('dashboard');
-    Route::get('/logout', [AuthController::class , 'logout'])->name('logout');
-    Route::resource('/carousels' , CarouselController::class);
+Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => 'isLogin'], function () {
+    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::resource('/carousels', CarouselController::class);
     Route::resource('/expert', ExpertController::class);
     Route::resource('/testimonial', TestimonialController::class);
     Route::resource('/advantage', AdvantageController::class);
     Route::resource('/service', AdminService::class);
     Route::get('/client',[ClientController::class , 'index'])->name('client');
-
+    Route::resource('/contact', ContactController::class)->only(['index', 'edit', 'update', 'destroy']);
+    Route::resource('/setting', SettingController::class)->only(['index', 'update']);
 });
-Route::group(['prefix' => '/admin', 'as' => 'admin.','middleware' => 'isNotLogin'], function (){
-    Route::get('/login', [AuthController::class , 'login'])->name('login');
-    Route::post('/login', [AuthController::class , 'loginPost'])->name('loginPost');
+Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => 'isNotLogin'], function () {
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/login', [AuthController::class, 'loginPost'])->name('loginPost');
 });
 
 

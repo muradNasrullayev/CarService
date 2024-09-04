@@ -34,7 +34,7 @@
     <li class="nav-item {{ request()->routeIs('admin.expert.index','admin.expert.create', 'admin.expert.store',
             'admin.expert.update','admin.expert.show','admin.expert.edit')? 'active' : '' }}">
         <a class="nav-link" href="{{ route('admin.expert.index') }}">
-            <i class="fas fa-fw fa-chart-area"></i>
+            <i class="fas fa-fw fa-users"></i>
             <span>Expert</span>
         </a>
     </li>
@@ -86,6 +86,19 @@
     {{--            <span>Setting</span>--}}
     {{--        </a>--}}
     {{--    </li>--}}
+        <li class="nav-item  {{ request()->routeIs('admin.contact.index','admin.contact.edit')? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.contact.index') }}">
+    <i class="fas fa-fw fa-address-book"></i>
+                <span>Contact</span>
+            </a>
+        </li>
+
+        <li class="nav-item  {{ request()->routeIs('admin.setting.index','admin.setting.update')? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.setting.index') }}">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Setting</span>
+            </a>
+        </li>
 
 
 
