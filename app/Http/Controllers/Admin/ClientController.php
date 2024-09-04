@@ -11,6 +11,6 @@ class ClientController extends Controller
     public function index()
     {
       $clients =  Client::query()->select( 'name', 'email','password')->get();
-      return view('admin.clients.index', compact('clients'));
+      return view('admin.client.index', compact('clients'));
     }
 }

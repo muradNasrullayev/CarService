@@ -20,7 +20,6 @@ class AuthController extends Controller
     public function loginPost(LoginRequest $request)//: \Illuminate\Http\RedirectResponse
     {
         $attempt = Auth::attempt(['email'=>$request->email, 'password'=>$request->password]);
-
         if ($attempt) {
             return redirect()->route('home');
         }
@@ -29,8 +28,6 @@ class AuthController extends Controller
 
     public function register(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
-
-
         return view('web.register');
     }
 
@@ -42,8 +39,9 @@ class AuthController extends Controller
                 'email'=>$request->email,
                 'password'=>Hash::make($request->getPassword())
             ];
-            Client::query()->create($data);}
+            Client::query()->create($data);
+            return redirect()->route('home');
+        }
         return redirect()->route('register')->withErrors('Cridentials are invalid');
     }
-
 }
