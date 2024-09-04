@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\{AuthController,
     AdminController,
     CarouselController,
+    ContactController,
     ExpertController,
     SettingController,
     TestimonialController,
@@ -25,6 +26,8 @@ use Illuminate\Support\Facades\Route;
 //WEB
 Route::get('/', [MainController::class, 'index']);
 Route::get('/home', [MainController::class, 'index'])->name('home');
+//    Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+//    Route::post('/', [ContactController::class, 'sendMessage'])->name('contact.send-message');
 Route::get('/about', [AboutController::class, 'about'])->name('about');
 Route::get('/booking', [BookingController::class, 'booking'])->name('booking');
 Route::get('/contact', [ContacController::class, 'contact'])->name('contact');
@@ -42,8 +45,8 @@ Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => 'isLogin']
     Route::resource('/expert', ExpertController::class);
     Route::resource('/testimonial', TestimonialController::class);
     Route::resource('/advantage', AdvantageController::class);
+    Route::resource('/contact', ContactController::class)->only(['index', 'edit', 'update', 'destroy']);
     Route::resource('/setting', SettingController::class)->only(['index', 'update']);
-
 });
 Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => 'isNotLogin'], function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');

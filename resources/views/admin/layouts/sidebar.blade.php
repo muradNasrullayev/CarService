@@ -54,12 +54,12 @@
         </a>
     </li>
 
-{{--        <li class="nav-item  {{ request()->routeIs('admin.contacts.index','admin.contacts.update')? 'active' : '' }}">--}}
-{{--            <a class="nav-link" href="{{ route('admin.contacts.index') }}">--}}
-{{--    <i class="fas fa-fw fa-address-book"></i>--}}
-{{--                <span>Contact</span>--}}
-{{--            </a>--}}
-{{--        </li>--}}
+        <li class="nav-item  {{ request()->routeIs('admin.contact.index','admin.contact.edit')? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.contact.index') }}">
+    <i class="fas fa-fw fa-address-book"></i>
+                <span>Contact</span>
+            </a>
+        </li>
 
         <li class="nav-item  {{ request()->routeIs('admin.setting.index','admin.setting.update')? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.setting.index') }}">
