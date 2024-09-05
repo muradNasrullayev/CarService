@@ -35,7 +35,6 @@ Route::get('/contact', [ContacController::class, 'contact'])->name('contact');
 Route::get('/service', [ServiceController::class, 'service'])->name('service');
 Route::get('/team', [TeamController::class, 'team'])->name('team');
 Route::get('/test', [TestController::class, 'test'])->name('test');
-Route::get('/codeTest', [CodeTestController::class, 'codeTest'])->name('codeTest');
 
 Route::name('login-register.')->group(function () {
     Route::get('/login', [WebAuthController::class, 'login'])->name('login');

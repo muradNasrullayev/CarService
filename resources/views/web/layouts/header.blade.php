@@ -66,7 +66,7 @@
                 <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
                 <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
                 <a class="btn btn-sm-square bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a>
-                @if(Auth::check())
+                @if(Auth::guard('client')->check())
                     <a class="" href="{{route('logout')}}">Logout</a>
                 @else
                     <a class="" href="{{route('login-register.login')}}">Login/</a>

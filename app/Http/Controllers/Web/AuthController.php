@@ -27,9 +27,11 @@ class AuthController extends Controller
      */
     public function loginPost(LoginRequest $request): RedirectResponse
     {
-        $credentials = $request->only('email', 'password');
+        $attempt= Auth::guard('client')->attempt(['email'=>$request->email,'password'=>$request->password]);
 
-        if (auth()->attempt($credentials)) {
+
+
+        if ($attempt) {
             return redirect()->route('home');
         } else {
             Session::flush();
@@ -55,11 +57,23 @@ class AuthController extends Controller
             $data = [
                 'name' => $request->name,
                 'email' => $request->email,
-                'password' => Hash::make($request->getPassword())
+                'password' => Hash::make($request->password)
             ];
             Client::query()->create($data);
+
+
+            $attemp = Auth::guard('client')->attempt(['email'=>$request->email,'password'=>$request->password]);
+//            return  [
+//                'email' => $request->email,
+//                'password' => $request->password,
+//                '$attemp' => $attemp
+//            ];
+            if ($attemp) {
+                return redirect()->route('home');
+            }
+
         }
-        return redirect()->route('register')->withErrors('Cridentials are invalid');
+        return redirect()->route('login-register.register')->withErrors('Cridentials are invalid');
     }
 
 
