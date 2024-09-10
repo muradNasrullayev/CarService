@@ -41,6 +41,8 @@ Route::name('login-register.')->group(function () {
     Route::get('/register', [WebAuthController::class, 'register'])->name('register');
     Route::post('/login', [WebAuthController::class, 'loginPost'])->name('loginPost');
     Route::post('/register', [WebAuthController::class, 'registerPost'])->name('registerPost');
+    Route::get('/forget-password', [WebAuthController::class, 'forgetPaswsord'])->name('forgetPassword');
+    Route::post('/forget-password-post', [WebAuthController::class, 'forgetPaswsordPost'])->name('forgetPasswordPost');
 });
 Route::get('/logout', [WebAuthController::class, 'logout'])->name('logout');
 

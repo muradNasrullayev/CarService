@@ -67,9 +67,11 @@
                 <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
                 <a class="btn btn-sm-square bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a>
                 @if(Auth::guard('client')->check())
-                    <a class="" href="{{route('logout')}}">Logout</a>
+                    <a class="" href="{{route('logout')}}">Logout-</a>
+                    <a class="" href="{{route('login-register.forgetPassword')}}">Change Password</a>
                 @else
                     <a class="" href="{{route('login-register.login')}}">Login/</a>
+
                     <a class="" href="{{route('login-register.register')}}">Register</a>
                 @endif
             </div>

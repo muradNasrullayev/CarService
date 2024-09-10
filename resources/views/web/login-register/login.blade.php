@@ -1,5 +1,7 @@
 @include('web.layouts.header')
-
+<br>
+<br>
+<br>
 <div class="login-container" style="display: flex; justify-content: center; align-items: center; width: 100%; max-width: 100%;">
     <form class="login-form" method="post" action="{{ route('login-register.loginPost') }}">
         @csrf
@@ -28,6 +30,7 @@
 
         <!-- Submit button -->
         <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
 
         <!-- Register buttons -->
         <div class="text-center">

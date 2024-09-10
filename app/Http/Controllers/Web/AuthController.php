@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Models\Client;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Web\{LoginRequest,RegisterRequest};
+use App\Http\Requests\Web\{ForgetPasswordRequest, LoginRequest, RegisterRequest};
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\{Auth,Hash,Session};
 use Illuminate\View\View;
@@ -63,11 +63,7 @@ class AuthController extends Controller
 
 
             $attemp = Auth::guard('client')->attempt(['email'=>$request->email,'password'=>$request->password]);
-//            return  [
-//                'email' => $request->email,
-//                'password' => $request->password,
-//                '$attemp' => $attemp
-//            ];
+
             if ($attemp) {
                 return redirect()->route('home');
             }
@@ -85,5 +81,31 @@ class AuthController extends Controller
         Session::flush();
         Auth::logout();
         return redirect()->route('home');
+    }
+
+    public function forgetPaswsord()
+    {
+        return view('web.login-register.forgetPassword');
+
+    }
+
+    public function forgetPaswsordPost(ForgetPasswordRequest $request)
+    {
+
+        $attempt = Auth::guard('client')->attempt(['email'=>Auth::guard('client')-> user()->email,
+            'password'=>$request->oldPassword]);
+
+        if ($attempt) {
+            if ($request->newPassword==$request->confirmPassword){
+                $user= Client::query()->find(Auth::guard('client')-> id());
+                $user->password =Hash::make($request->newPassword);
+                $user->save();
+                return redirect()->route('home');
+            }
+            else{
+                return redirect()->route('login-register.forgetPassword');
+            }
+        }
+
     }
 }

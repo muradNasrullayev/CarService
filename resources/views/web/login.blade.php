@@ -38,10 +38,12 @@
         <!-- Submit button -->
         <button type="submit " class="btn btn-primary btn-block mb-4">Sign in</button>
 
+        <a href="">Forget Password</a>
+
         <!-- Register buttons -->
-        <div class="text-center">
-            <p>Not a member? <a href="{{route('register')}}">Register</a></p>
-        </div>
+    {{--        <div class="text-center">--}}
+    {{--            <p>Not a member? <a href="{{route('register')}}">Register</a></p>--}}
+    {{--        </div>--}}
     </form>
 </div>
 
