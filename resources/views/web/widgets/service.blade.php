@@ -30,10 +30,9 @@
                             <div class="col-md-6">
                                 <h3 class="mb-3">{{$service->description_title}}</h3>
                                 <p class="mb-4">{{$service->description}}</p>
-                                @foreach($itemNews[$item] as $itemNew )
-{{--                                    {{$service_advantage}} <br>--}}
-                                    <p><i class="fa fa-check text-success me-3"></i>{{$advantage_datas[$item][$itemNew-1]}}</p>
-                                @endforeach
+                                @for($i=0; $i<$service->advantages()->get()->count();$i++)
+                                    <p><i class="fa fa-check text-success me-3"></i>{{$service->advantages()->get()[$i]->title}}</p>
+                                @endfor
                                 <a href="" class="btn btn-primary py-3 px-5 mt-3">Read More<i class="fa fa-arrow-right ms-3"></i></a>
 
 

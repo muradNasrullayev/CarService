@@ -18,6 +18,6 @@ class Service extends Model
     ];
     public function advantages()
     {
-        return $this->belongsToMany(Advantage::class);
+        return $this->belongsToMany(Advantage::class, 'service_advantages');
     }
 }

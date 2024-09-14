@@ -9,6 +9,7 @@ class ServiceAdvantage extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
       'service_id',
       'advantage_id',
